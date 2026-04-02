@@ -1,0 +1,34 @@
+.\remote_hal\com_debug.o: ..\Common\Com_debug.c
+.\remote_hal\com_debug.o: ..\Common\Com_debug.h
+.\remote_hal\com_debug.o: ../Core/Inc/usart.h
+.\remote_hal\com_debug.o: ../Core/Inc/main.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+.\remote_hal\com_debug.o: ../Core/Inc/stm32f1xx_hal_conf.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Include/core_cm3.h
+.\remote_hal\com_debug.o: C:\Program Files\Keil_v5_mdk\ARM\arm5_compiler\Bin\..\include\stdint.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Include/cmsis_version.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+.\remote_hal\com_debug.o: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
+.\remote_hal\com_debug.o: C:\Program Files\Keil_v5_mdk\ARM\arm5_compiler\Bin\..\include\stddef.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+.\remote_hal\com_debug.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+.\remote_hal\com_debug.o: ../Common/Com_debug.h
+.\remote_hal\com_debug.o: C:\Program Files\Keil_v5_mdk\ARM\arm5_compiler\Bin\..\include\stdio.h
+.\remote_hal\com_debug.o: C:\Program Files\Keil_v5_mdk\ARM\arm5_compiler\Bin\..\include\stdarg.h
+.\remote_hal\com_debug.o: C:\Program Files\Keil_v5_mdk\ARM\arm5_compiler\Bin\..\include\string.h
