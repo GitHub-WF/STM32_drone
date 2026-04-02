@@ -89,7 +89,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  log("Hello World remote");
+  log("Hello World remote_hal");
 
   // 启动freeRTOS - 后续代码都不执行了
   App_freeRTOS_Task_Init();
