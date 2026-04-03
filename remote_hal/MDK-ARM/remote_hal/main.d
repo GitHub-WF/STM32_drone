@@ -43,3 +43,4 @@
 .\remote_hal\main.o: ../freeRTOS/include/mpu_wrappers.h
 .\remote_hal\main.o: ../freeRTOS/include/task.h
 .\remote_hal\main.o: ../freeRTOS/include/list.h
+.\remote_hal\main.o: ..\Interface\Int_IP5305T.h

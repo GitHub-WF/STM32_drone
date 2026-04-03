@@ -22,6 +22,7 @@ virtualFolder:
               files:
                 - path: ../Core/Src/main.c
                 - path: ../Core/Src/gpio.c
+                - path: ../Core/Src/tim.c
                 - path: ../Core/Src/usart.c
                 - path: ../Core/Src/stm32f1xx_it.c
                 - path: ../Core/Src/stm32f1xx_hal_msp.c
@@ -32,7 +33,8 @@ virtualFolder:
         - name: STM32F1xx_HAL_Driver
           files:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
-            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
@@ -43,6 +45,7 @@ virtualFolder:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
           folders: []
         - name: CMSIS
           files:
@@ -99,6 +102,13 @@ virtualFolder:
         - path: ../App/App_freeRTOS_Task.c
         - path: ../App/App_freeRTOS_Task.h
       folders: []
+    - name: Interface
+      files:
+        - path: ../Interface/Int_IP5305T.c
+        - path: ../Interface/Int_IP5305T.h
+        - path: ../Interface/Int_Motor.c
+        - path: ../Interface/Int_Motor.h
+      folders: []
     - name: ::CMSIS
       files: []
       folders: []
@@ -123,6 +133,7 @@ targets:
         - ../freeRTOS/include
         - ../freeRTOS/portable
         - ../App
+        - ../Interface
         - .cmsis/include
         - RTE/_flight_hal
       libList: []

@@ -42,3 +42,4 @@
 .\remote_hal\app_freertos_task.o: ../freeRTOS/include/mpu_wrappers.h
 .\remote_hal\app_freertos_task.o: ../freeRTOS/include/task.h
 .\remote_hal\app_freertos_task.o: ../freeRTOS/include/list.h
+.\remote_hal\app_freertos_task.o: ..\Interface\Int_IP5305T.h

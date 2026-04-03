@@ -99,6 +99,11 @@ virtualFolder:
         - path: ../App/App_freeRTOS_Task.c
         - path: ../App/App_freeRTOS_Task.h
       folders: []
+    - name: Interface
+      files:
+        - path: ../Interface/Int_IP5305T.c
+        - path: ../Interface/Int_IP5305T.h
+      folders: []
     - name: ::CMSIS
       files: []
       folders: []
@@ -269,6 +274,7 @@ targets:
         - ../freeRTOS/include
         - ../freeRTOS/portable
         - ../App
+        - ../Interface
         - .cmsis/include
         - RTE/_remote_hal
       libList: []

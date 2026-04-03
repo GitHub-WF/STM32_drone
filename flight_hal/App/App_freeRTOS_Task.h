@@ -4,6 +4,8 @@
 #include "main.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "Int_IP5305T.h"
+#include "Int_Motor.h"
 
 /**
  * @brief 启动freeRTOS
