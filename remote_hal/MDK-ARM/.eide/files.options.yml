@@ -18,5 +18,7 @@ options:
     remote_hal:
         files: {}
         virtualPathFiles:
+            <virtual_root>/Application/User/Core/spi.c: ""
             <virtual_root>/Application/User/Core/usart.c: ""
+            <virtual_root>/Drivers/STM32F1xx_HAL_Driver/stm32f1xx_hal_spi.c: ""
             <virtual_root>/Drivers/STM32F1xx_HAL_Driver/stm32f1xx_hal_uart.c: ""

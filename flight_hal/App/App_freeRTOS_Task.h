@@ -2,10 +2,13 @@
 #define __APP_FREERTOS_TASK_H__
 
 #include "main.h"
+#include "Com_config.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Int_IP5305T.h"
 #include "Int_Motor.h"
+#include "Int_LED.h"
+#include "Int_SI24R1.h"
 
 /**
  * @brief 启动freeRTOS
