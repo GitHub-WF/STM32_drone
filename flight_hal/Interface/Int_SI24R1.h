@@ -13,7 +13,7 @@
 #define EN_HIGH HAL_GPIO_WritePin(SI_EN_GPIO_Port, SI_EN_Pin, GPIO_PIN_SET)
 
 #define TX_ADR_WIDTH 5    // 5字节宽度发送数据
-#define TX_PLOAD_WIDTH 32 // 数据通道有效数据宽度
+#define TX_PLOAD_WIDTH 17 // 数据通道有效数据宽度
 
 //********************************************************************************************************************//
 // SPI(SI24R1) commands

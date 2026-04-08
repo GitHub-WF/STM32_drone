@@ -82,23 +82,11 @@ void joystick_task(void *arg)
 
 void comm_task(void *arg)
 {
-  uint8_t txbuf[TX_PLOAD_WIDTH] = {0};
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
   while (1)
   {
-    memset(txbuf, 0, TX_PLOAD_WIDTH);  // 每次循环都清零
     // 使用SI24R1发送数据
-    // 1.进入TX模式
-    Int_SI24R1_TX_Mode();
-    // 2.发送数据
-    txbuf[0] = 'h';
-    txbuf[1] = 'e';
-    txbuf[2] = 'l';
-    txbuf[3] = 'l';
-    txbuf[4] = 'o';
-    Int_SI24R1_TxPacket(txbuf);
-    // 3.恢复到接收模式
-    Int_SI24R1_RX_Mode();
+    App_transmit_data();
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
   }

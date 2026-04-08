@@ -44,6 +44,10 @@ void App_joystick_calibrate(void)
 
 Remote_Data remote_data = {0};
 
+// 这里会有线程安全问题，按键和摇杆数据访问了同一个数据，需要在处理按键数据时加锁
+// 1.使用临界区解决
+// 2.使用信号量解决
+
 /**
  * @brief 保存按键数据
  *
@@ -96,6 +100,10 @@ void App_process_key_data(void)
  */
 void App_process_joystick_data()
 {
+  // 解决线程安全问题
+  // 进入临界区
+  taskENTER_CRITICAL();
+
   // 1.读取摇杆数据ADC值
   Int_joystick_get(&joystick);
 
@@ -127,4 +135,7 @@ void App_process_joystick_data()
   remote_data.pitch = joystick.pitch;
 
   log("joystick:%d,%d, %d,%d\n", joystick.throttle, joystick.yaw, joystick.roll, joystick.pitch);
+
+  // 退出临界区
+  taskEXIT_CRITICAL();
 }

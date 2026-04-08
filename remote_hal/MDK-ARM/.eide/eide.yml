@@ -108,6 +108,8 @@ virtualFolder:
         - path: ../App/App_freeRTOS_Task.h
         - path: ../App/App_process_data.c
         - path: ../App/App_process_data.h
+        - path: ../App/App_transmit_data.c
+        - path: ../App/App_transmit_data.h
       folders: []
     - name: Interface
       files:

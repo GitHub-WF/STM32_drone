@@ -134,7 +134,7 @@ void led_task(void *arg)
   }
 }
 
-uint8_t rxbuf[TX_PLOAD_WIDTH] = {0};
+uint8_t rxbuf[TX_PLOAD_WIDTH + 1] = {0};
 void comm_task(void *arg)
 {
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
