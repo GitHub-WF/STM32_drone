@@ -105,6 +105,8 @@ virtualFolder:
       files:
         - path: ../App/App_freeRTOS_Task.c
         - path: ../App/App_freeRTOS_Task.h
+        - path: ../App/App_receive_data.c
+        - path: ../App/App_receive_data.h
       folders: []
     - name: Interface
       files:

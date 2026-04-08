@@ -12,7 +12,7 @@ typedef struct
   uint16_t pitch;
   uint16_t roll;
   uint8_t shutdown; // 1 关机 0 不关机
-  uint8_t fix_height;
+  uint8_t fix_height; // 1 固定高度 0 不固定高度
 } Remote_Data;
 
 /**

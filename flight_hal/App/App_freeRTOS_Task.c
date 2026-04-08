@@ -134,18 +134,16 @@ void led_task(void *arg)
   }
 }
 
-uint8_t rxbuf[TX_PLOAD_WIDTH + 1] = {0};
 void comm_task(void *arg)
 {
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
   while (1)
   {
-    // 使用SI24R1接收数据
-    uint8_t res = Int_SI24R1_RxPacket(rxbuf);
-    if (res == 0)
-    {
-      log("rece data: %s", rxbuf);
-    }
+    // 接收数据，并处理
+    uint8_t res = App_receive_data();
+    
+    // 处理连接状态
+    App_process_connect_data(res);
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
   }

@@ -1,0 +1,29 @@
+#ifndef __APP_RECEIVE_DATA_H__
+#define __APP_RECEIVE_DATA_H__
+
+#include "Int_SI24R1.h"
+#include "Com_config.h"
+
+// 定义帧头校验值
+#define FRAME_HEADER_1 '6'
+#define FRAME_HEADER_2 '6'
+#define FRAME_HEADER_3 '6'
+
+// 最大重试次数
+#define MAX_RETRY_COUNT 10
+
+/**
+ * @brief 接收遥控器发送的数据，解析为结构体
+ * 
+ * @return uint8_t 0 校验通过 1 校验失败
+ */
+uint8_t App_receive_data(void);
+
+/**
+ * @brief 处理连接状态数据
+ * 
+ * @param data 
+ */
+void App_process_connect_data(uint8_t *res);
+
+#endif /* __APP_RECEIVE_DATA_H__ */

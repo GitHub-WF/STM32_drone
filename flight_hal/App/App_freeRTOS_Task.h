@@ -9,6 +9,7 @@
 #include "Int_Motor.h"
 #include "Int_LED.h"
 #include "Int_SI24R1.h"
+#include "App_receive_data.h"
 
 /**
  * @brief 启动freeRTOS
