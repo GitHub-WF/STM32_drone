@@ -22,6 +22,8 @@ virtualFolder:
               files:
                 - path: ../Core/Src/main.c
                 - path: ../Core/Src/gpio.c
+                - path: ../Core/Src/adc.c
+                - path: ../Core/Src/dma.c
                 - path: ../Core/Src/spi.c
                 - path: ../Core/Src/usart.c
                 - path: ../Core/Src/stm32f1xx_it.c
@@ -33,7 +35,8 @@ virtualFolder:
         - name: STM32F1xx_HAL_Driver
           files:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
-            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
@@ -44,6 +47,7 @@ virtualFolder:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
           folders: []
         - name: CMSIS
@@ -54,6 +58,8 @@ virtualFolder:
       files:
         - path: ../Common/Com_debug.c
         - path: ../Common/Com_debug.h
+        - path: ../Common/Com_utils.c
+        - path: ../Common/Com_utils.h
       folders: []
     - name: freeRTOS
       files:
@@ -100,6 +106,8 @@ virtualFolder:
       files:
         - path: ../App/App_freeRTOS_Task.c
         - path: ../App/App_freeRTOS_Task.h
+        - path: ../App/App_process_data.c
+        - path: ../App/App_process_data.h
       folders: []
     - name: Interface
       files:
@@ -107,6 +115,10 @@ virtualFolder:
         - path: ../Interface/Int_IP5305T.h
         - path: ../Interface/Int_SI24R1.c
         - path: ../Interface/Int_SI24R1.h
+        - path: ../Interface/Int_Key.c
+        - path: ../Interface/Int_Key.h
+        - path: ../Interface/Int_Joystick.c
+        - path: ../Interface/Int_Joystick.h
       folders: []
     - name: ::CMSIS
       files: []

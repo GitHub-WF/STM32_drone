@@ -1,8 +1,9 @@
 #ifndef __nRF24L01P__
 #define __nRF24L01P__
 
-#include "main.h"
 #include "spi.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 // STM32使用SI24R1需要去CUBEMX中配置SPI
 

@@ -26,7 +26,7 @@ uint8_t Int_SI24R1_Write_Reg(uint8_t reg, uint8_t value)
 	SPI_RW(value);
 	CS_HIGH;
 
-	return (status);
+	return status;
 }
 
 /********************************************************
@@ -45,7 +45,7 @@ uint8_t Int_SI24R1_Write_Buf(uint8_t reg, const uint8_t *pBuf, uint8_t size)
 	for (byte_ctr = 0; byte_ctr < size; byte_ctr++) SPI_RW(*pBuf++);
 	CS_HIGH;
 
-	return (status);
+	return status;
 }
 
 /********************************************************
@@ -62,7 +62,7 @@ uint8_t Int_SI24R1_Read_Reg(uint8_t reg)
 	value = SPI_RW(0);
 	CS_HIGH;
 
-	return (value);
+	return value;
 }
 
 /********************************************************
@@ -81,7 +81,7 @@ uint8_t Int_SI24R1_Read_Buf(uint8_t reg, uint8_t *pBuf, uint8_t size)
 	for (byte_ctr = 0; byte_ctr < size; byte_ctr++) pBuf[byte_ctr] = SPI_RW(0); // 读取数据，低字节在前
 	CS_HIGH;
 
-	return (status);
+	return status;
 }
 
 /********************************************************
@@ -161,8 +161,9 @@ uint8_t Int_SI24R1_TxPacket(uint8_t *txbuf)
 	do
 	{
 		state = Int_SI24R1_Read_Reg(STATUS); // 读取状态寄存器的值
+		vTaskDelay(pdMS_TO_TICKS(1)); // 防止发送失败导致任务阻塞
 	}
-	while ((state & TX_DS) != 1 && (state & MAX_RT) != 1);
+	while (!(state & TX_DS) && !(state & MAX_RT));
 
 	Int_SI24R1_Write_Reg(SI24R1_WRITE_REG + STATUS, state); // 清除TX_DS或MAX_RT中断标志
 	if (state & TX_DS) // 发送完成
