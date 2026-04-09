@@ -22,6 +22,7 @@ virtualFolder:
               files:
                 - path: ../Core/Src/main.c
                 - path: ../Core/Src/gpio.c
+                - path: ../Core/Src/i2c.c
                 - path: ../Core/Src/spi.c
                 - path: ../Core/Src/tim.c
                 - path: ../Core/Src/usart.c
@@ -34,7 +35,7 @@ virtualFolder:
         - name: STM32F1xx_HAL_Driver
           files:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
-            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
@@ -45,6 +46,7 @@ virtualFolder:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
@@ -59,6 +61,10 @@ virtualFolder:
         - path: ../Common/Com_debug.h
         - path: ../Common/Com_config.h
         - path: ../Common/Com_config.c
+        - path: ../Common/Com_Filter.c
+        - path: ../Common/Com_Filter.h
+        - path: ../Common/Com_imu.c
+        - path: ../Common/Com_imu.h
       folders: []
     - name: freeRTOS
       files:
@@ -107,6 +113,8 @@ virtualFolder:
         - path: ../App/App_freeRTOS_Task.h
         - path: ../App/App_receive_data.c
         - path: ../App/App_receive_data.h
+        - path: ../App/App_flight.c
+        - path: ../App/App_flight.h
       folders: []
     - name: Interface
       files:
@@ -118,6 +126,8 @@ virtualFolder:
         - path: ../Interface/Int_LED.h
         - path: ../Interface/Int_SI24R1.c
         - path: ../Interface/Int_SI24R1.h
+        - path: ../Interface/Int_MPU6050.c
+        - path: ../Interface/Int_MPU6050.h
       folders: []
     - name: ::CMSIS
       files: []

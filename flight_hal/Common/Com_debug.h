@@ -14,10 +14,10 @@
 #define __FILENAME__ (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__)
 #define __FILENAME (strrchr(__FILENAME__, '\\') ? strrchr(__FILENAME__, '\\') + 1 : __FILENAME__)
 // 扩展加上文件名和行号
-#define log(format, ...) printf("[%s:%d] " format "\r\n", __FILENAME, __LINE__, ##__VA_ARGS__);
+#define log_printf(format, ...) printf("[%s:%d] " format "\r\n", __FILENAME, __LINE__, ##__VA_ARGS__);
 #else
 // 定义一个空文本替换宏定义
-#define log(format, ...)
+#define log_printf(format, ...)
 #endif // DEBUG
 
 #endif /* __COM_DEBUG_H__ */

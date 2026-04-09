@@ -214,5 +214,5 @@ void Int_SI24R1_Init(void)
   }
   // 2.设置默认接收模式
   Int_SI24R1_RX_Mode();
-  log("SI24R1 init success");
+  log_printf("SI24R1 init success");
 }

@@ -32,4 +32,13 @@ typedef struct
 } Remote_Data;
 extern Remote_Data remote_data;
 
+typedef enum
+{
+  FREE = 0,
+  MAX,
+  LEAVE_MAX,
+  MIN,
+  UNLOCK,
+} Thr_state;
+
 #endif /* __COM_CONFIG_H__ */

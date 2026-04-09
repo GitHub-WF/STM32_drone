@@ -15,7 +15,7 @@ void Int_Motor_Set_Speed(Motor_Struct *motor)
 {
   if (motor->speed > 1000)
   {
-    log("speed is so fast");
+    log_printf("speed is so fast");
     return;
   }
   __HAL_TIM_SET_COMPARE(motor->htim, motor->channel, motor->speed); // 设置指定电机的比较值，控制电机速度

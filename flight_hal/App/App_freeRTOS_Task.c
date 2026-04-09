@@ -50,30 +50,35 @@ void power_task(void *arg)
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
   while (1)
   {
-    vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(POWER_TASK_PERIOD_MS)); // 10秒钟执行一次，激活电源，防止自动关机
+    /* vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(POWER_TASK_PERIOD_MS)); // 10秒钟执行一次，激活电源，防止自动关机
     // 启动电源
-    Int_IP5305T_Start();
+    Int_IP5305T_Start(); */
+
+    // 使用直接任务通知的接受方式实现10s处理一次
+    // 一直等任务通知，收到通知res = 1, 超时res = 0
+    uint32_t res = ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(POWER_TASK_PERIOD_MS));
+    if (res != 0)
+    {
+      Int_IP5305T_Stop();
+    }
+    else
+    {
+      // 10s内未收到通知，保持当前状态
+      Int_IP5305T_Start();
+    }
   }
 }
 
 void flight_task(void *arg)
 {
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
-  // 启动电机
-  Int_Motor_Start(&motor_left_0);
-  Int_Motor_Start(&motor_left_1);
-  Int_Motor_Start(&motor_right_0);
-  Int_Motor_Start(&motor_right_1);
+  // 初始化MPU6050
+  Int_MPU6050_Init();
   while (1)
   {
-    motor_left_0.speed = 500;
-    motor_left_1.speed = 600;
-    motor_right_0.speed = 700;
-    motor_right_1.speed = 800;
-    Int_Motor_Set_Speed(&motor_left_0);
-    Int_Motor_Set_Speed(&motor_left_1);
-    Int_Motor_Set_Speed(&motor_right_0);
-    Int_Motor_Set_Speed(&motor_right_1);
+    // 1.获取三轴加速度和角速度
+    App_flight_get_euler_angle();
+
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(FLIGHT_TASK_PERIOD_MS)); // 6毫秒控制一次电机速度，保持电机可控运转
   }
 }
@@ -144,6 +149,18 @@ void comm_task(void *arg)
     
     // 处理连接状态
     App_process_connect_data(res);
+
+    // 处理关机指令
+    if (remote_data.shutdown == 1)
+    {
+      // 关机（这种方式功能可以实现，但是项目结构很奇怪）
+      // Int_IP5305T_Stop();
+      // 使用直接任务通知，通知电源任务执行关机
+      xTaskNotifyGive(powerTaskHandle);
+    }
+
+    // 处理飞机飞行状态
+    App_process_flight_data();
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
   }

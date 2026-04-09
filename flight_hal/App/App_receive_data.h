@@ -3,6 +3,8 @@
 
 #include "Int_SI24R1.h"
 #include "Com_config.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 // 定义帧头校验值
 #define FRAME_HEADER_1 '6'
@@ -22,8 +24,14 @@ uint8_t App_receive_data(void);
 /**
  * @brief 处理连接状态数据
  * 
- * @param data 
+ * @param res 
  */
-void App_process_connect_data(uint8_t *res);
+void App_process_connect_data(uint8_t res);
+
+/**
+ * @brief 处理飞机的飞行状态
+ * 
+ */
+void App_process_flight_data(void);
 
 #endif /* __APP_RECEIVE_DATA_H__ */
