@@ -14,6 +14,9 @@
 // 最大重试次数
 #define MAX_RETRY_COUNT 10
 
+extern Remote_Data remote_data;
+extern 
+
 /**
  * @brief 接收遥控器发送的数据，解析为结构体
  * 

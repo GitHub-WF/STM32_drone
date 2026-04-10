@@ -1,6 +1,6 @@
 #include "App_receive_data.h"
 
-Remote_Data remote_data = {0};
+Remote_Data remote_data = {.throttle = 0, .yaw = 500, .pitch = 500, .roll = 500, .shutdown = 0, .fix_height = 0};
 
 Thr_state thr_state = FREE;
 

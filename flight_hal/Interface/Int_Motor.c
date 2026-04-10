@@ -1,10 +1,10 @@
 #include "Int_Motor.h"
 
 // 内存管理 C语言中的结构体通常保存在堆中，不会自动垃圾回收 => 建议使用同一个结构体，不断循环使用
-Motor_Struct motor_left_0 = {.htim = &htim3, .channel = TIM_CHANNEL_1, .speed = 200};
-Motor_Struct motor_left_1 = {.htim = &htim4, .channel = TIM_CHANNEL_4, .speed = 200};
-Motor_Struct motor_right_0 = {.htim = &htim2, .channel = TIM_CHANNEL_2, .speed = 200};
-Motor_Struct motor_right_1 = {.htim = &htim1, .channel = TIM_CHANNEL_3, .speed = 200};
+Motor_Struct motor_left_0 = {.htim = &htim3, .channel = TIM_CHANNEL_1, .speed = 0};
+Motor_Struct motor_left_1 = {.htim = &htim4, .channel = TIM_CHANNEL_4, .speed = 0};
+Motor_Struct motor_right_0 = {.htim = &htim2, .channel = TIM_CHANNEL_2, .speed = 0};
+Motor_Struct motor_right_1 = {.htim = &htim1, .channel = TIM_CHANNEL_3, .speed = 0};
 
 /**
  * @brief 设置电机速度
@@ -26,7 +26,10 @@ void Int_Motor_Set_Speed(Motor_Struct *motor)
  *
  * @param motor 指向要启动的电机结构体的指针
  */
-void Int_Motor_Start(Motor_Struct *motor)
+void Int_Motor_Start()
 {
-  HAL_TIM_PWM_Start(motor->htim, motor->channel); // 启动指定电机的PWM输出
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1); // 启动指定电机的PWM输出
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4); // 启动指定电机的PWM输出
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2); // 启动指定电机的PWM输出
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3); // 启动指定电机的PWM输出
 }

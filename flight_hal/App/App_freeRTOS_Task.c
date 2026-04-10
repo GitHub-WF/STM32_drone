@@ -72,12 +72,17 @@ void power_task(void *arg)
 void flight_task(void *arg)
 {
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
-  // 初始化MPU6050
-  Int_MPU6050_Init();
+  App_flight_init();
   while (1)
   {
     // 1.获取三轴加速度和角速度
     App_flight_get_euler_angle();
+
+    // 2.计算PID输出
+    App_flight_pid_calc();
+
+    // 3.根据PID输出更新电机速度
+    App_flight_update_motor_speed();
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(FLIGHT_TASK_PERIOD_MS)); // 6毫秒控制一次电机速度，保持电机可控运转
   }

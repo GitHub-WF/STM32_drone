@@ -65,6 +65,8 @@ virtualFolder:
         - path: ../Common/Com_Filter.h
         - path: ../Common/Com_imu.c
         - path: ../Common/Com_imu.h
+        - path: ../Common/Com_pid.c
+        - path: ../Common/Com_pid.h
       folders: []
     - name: freeRTOS
       files:
