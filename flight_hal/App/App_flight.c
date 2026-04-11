@@ -3,6 +3,8 @@
 MPU6050_Data_t mpu6050_data = {0};
 Euler_angle euler_angle = {0};
 
+extern TaskHandle_t commTaskHandle;
+
 /**
  * @brief mpu6050初始化和启动电机
  * 
@@ -13,6 +15,8 @@ void App_flight_init(void)
   Int_MPU6050_Init();
   // 2. 启动电机
   Int_Motor_Start();
+  // 3. 初始化激光测距仪
+  Int_VL53L1_Init();
 }
 
 /**
@@ -67,6 +71,19 @@ void App_flight_pid_calc()
 }
 
 /**
+ * @brief 固定高度状态，根据距离数据调整PID输出
+ * 
+ */
+void App_flight_fix_height(void)
+{
+  // 1.24ms一次
+  // 1 填写目标值（按下定高功能时的高度）和测量值
+  uint16_t Distance = Int_VL53L1_RdDistance();
+  out_pid_height.measure = Distance;
+  Common_PID_Calc(&out_pid_height);
+}
+
+/**
  * @brief 根据PID输出更新电机速度
  * 
  */
@@ -92,10 +109,29 @@ void App_flight_update_motor_speed(void)
     motor_right_1.speed = remote_data.throttle - in_pid_pitch.output + in_pid_roll.output + in_pid_yaw.output;
     break;
   case FIX_HEIGHT:
-    /* code */
+    motor_left_0.speed = remote_data.throttle + in_pid_pitch.output - in_pid_roll.output + in_pid_yaw.output + out_pid_height.output;
+    motor_left_1.speed = remote_data.throttle - in_pid_pitch.output - in_pid_roll.output - in_pid_yaw.output + out_pid_height.output;
+    motor_right_0.speed = remote_data.throttle + in_pid_pitch.output + in_pid_roll.output - in_pid_yaw.output + out_pid_height.output;
+    motor_right_1.speed = remote_data.throttle - in_pid_pitch.output + in_pid_roll.output + in_pid_yaw.output + out_pid_height.output;
     break;
   case FAIL:
-    /* code */
+    // 平稳降落飞机
+    if (motor_left_0.speed > 100 && motor_left_1.speed > 100 && motor_right_0.speed > 100 && motor_right_1.speed > 100)
+    {
+      motor_left_0.speed -= 1;
+      motor_left_1.speed -= 1;
+      motor_right_0.speed -= 1;
+      motor_right_1.speed -= 1;
+    }
+    
+    if (Int_VL53L1_RdDistance() < 100)
+    {
+      motor_left_0.speed = 0;
+      motor_left_1.speed = 0;
+      motor_right_0.speed = 0;
+      motor_right_1.speed = 0;
+      xTaskNotifyGive(commTaskHandle);
+    }
     break;
   }
 

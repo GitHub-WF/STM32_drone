@@ -158,6 +158,8 @@ void App_process_flight_data(void)
     {
       flight_state = FIX_HEIGHT;
       remote_data.fix_height = 0;
+      // 进入定高状态时，记录当前高度1
+      out_pid_height.desire = Int_VL53L1_RdDistance();
     }
     // 判断失联状态
     if (remote_state == DISCONNECTED)
@@ -179,10 +181,9 @@ void App_process_flight_data(void)
     }
     break;
   case FAIL:
-    // 处理失联故障，缓慢停止电机
-    // ...
-    vTaskDelay(pdMS_TO_TICKS(1));
-    // 进入空闲状态
+    // 等待故障处理完成进入空闲状态
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY); // 一直等待故障处理完成
+
     flight_state = IDLE;
     break;
   }

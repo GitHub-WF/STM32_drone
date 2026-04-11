@@ -98,6 +98,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_SPI1_Init();
   MX_I2C1_Init();
+  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
   log_printf("Hello World flight");

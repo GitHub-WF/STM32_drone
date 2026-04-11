@@ -5,6 +5,8 @@
 #include "Com_config.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "Int_VL53L1.h"
+#include "Com_pid.h"
 
 // 定义帧头校验值
 #define FRAME_HEADER_1 '6'

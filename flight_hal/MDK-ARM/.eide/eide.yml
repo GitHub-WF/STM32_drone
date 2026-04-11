@@ -130,7 +130,19 @@ virtualFolder:
         - path: ../Interface/Int_SI24R1.h
         - path: ../Interface/Int_MPU6050.c
         - path: ../Interface/Int_MPU6050.h
-      folders: []
+      folders:
+        - name: fix_height
+          files:
+            - path: ../Interface/fix_height/vl53l1_platform.c
+            - path: ../Interface/fix_height/vl53l1_platform.h
+            - path: ../Interface/fix_height/vl53l1_types.h
+            - path: ../Interface/fix_height/VL53L1X_api.c
+            - path: ../Interface/fix_height/VL53L1X_api.h
+            - path: ../Interface/fix_height/VL53L1X_calibration.c
+            - path: ../Interface/fix_height/VL53L1X_calibration.h
+            - path: ../Interface/fix_height/Int_VL53L1.c
+            - path: ../Interface/fix_height/Int_VL53L1.h
+          folders: []
     - name: ::CMSIS
       files: []
       folders: []
@@ -156,6 +168,7 @@ targets:
         - ../freeRTOS/portable
         - ../App
         - ../Interface
+        - ../Interface/fix_height
         - .cmsis/include
         - RTE/_flight_hal
       libList: []

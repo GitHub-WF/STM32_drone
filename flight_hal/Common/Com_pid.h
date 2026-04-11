@@ -26,6 +26,8 @@ extern PID_Struct in_pid_roll;
 extern PID_Struct out_pid_yaw;
 extern PID_Struct in_pid_yaw;
 
+extern PID_Struct out_pid_height;
+
 // 单次PID计算
 void Common_PID_Calc(PID_Struct *pid);
 

@@ -39,4 +39,10 @@ void App_flight_pid_calc(void);
  */
 void App_flight_update_motor_speed(void);
 
+/**
+ * @brief 固定高度状态，根据距离数据调整PID输出
+ * 
+ */
+void App_flight_fix_height(void);
+
 #endif /* __APP_FLIGHT_H__ */

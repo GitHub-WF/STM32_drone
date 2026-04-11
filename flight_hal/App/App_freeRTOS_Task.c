@@ -72,6 +72,7 @@ void power_task(void *arg)
 void flight_task(void *arg)
 {
   TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
+  uint8_t count = 0;
   App_flight_init();
   while (1)
   {
@@ -81,7 +82,19 @@ void flight_task(void *arg)
     // 2.计算PID输出
     App_flight_pid_calc();
 
-    // 3.根据PID输出更新电机速度
+    // 3.判断定高状态
+    if (flight_state == FIX_HEIGHT)
+    {
+      count++;
+      if (count >= 4) 
+      {
+        // 定高状态，根据距离数据调整PID输出
+        App_flight_fix_height();
+        count = 0;
+      }
+    }
+
+    // 4.根据PID输出更新电机速度
     App_flight_update_motor_speed();
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(FLIGHT_TASK_PERIOD_MS)); // 6毫秒控制一次电机速度，保持电机可控运转
@@ -164,7 +177,7 @@ void comm_task(void *arg)
       xTaskNotifyGive(powerTaskHandle);
     }
 
-    // 处理飞机飞行状态
+    // 处理飞机飞行状态 - 遇到故障状态时
     App_process_flight_data();
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次

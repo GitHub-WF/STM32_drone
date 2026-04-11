@@ -337,7 +337,7 @@
               <MiscControls />
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine />
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Common;../freeRTOS;../freeRTOS/include;../freeRTOS/portable;../App;../Interface</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Common;../freeRTOS;../freeRTOS/include;../freeRTOS/portable;../App;../Interface;../Interface/fix_height</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1232,6 +1232,56 @@
               <FileName>Int_MPU6050.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Interface\Int_MPU6050.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Interface/fix_height</GroupName>
+          <Files>
+            <File>
+              <FileName>vl53l1_platform.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\fix_height\vl53l1_platform.c</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l1_platform.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\fix_height\vl53l1_platform.h</FilePath>
+            </File>
+            <File>
+              <FileName>vl53l1_types.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\fix_height\vl53l1_types.h</FilePath>
+            </File>
+            <File>
+              <FileName>VL53L1X_api.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\fix_height\VL53L1X_api.c</FilePath>
+            </File>
+            <File>
+              <FileName>VL53L1X_api.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\fix_height\VL53L1X_api.h</FilePath>
+            </File>
+            <File>
+              <FileName>VL53L1X_calibration.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\fix_height\VL53L1X_calibration.c</FilePath>
+            </File>
+            <File>
+              <FileName>VL53L1X_calibration.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\fix_height\VL53L1X_calibration.h</FilePath>
+            </File>
+            <File>
+              <FileName>Int_VL53L1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\fix_height\Int_VL53L1.c</FilePath>
+            </File>
+            <File>
+              <FileName>Int_VL53L1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\fix_height\Int_VL53L1.h</FilePath>
             </File>
           </Files>
         </Group>
