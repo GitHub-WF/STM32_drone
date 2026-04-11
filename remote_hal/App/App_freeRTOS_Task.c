@@ -35,7 +35,7 @@ void oled_task(void *arg);
 #define OLED_TASK_STACK_SIZE 128 // 任务栈大小，单位为字节，128字节对于这个简单的任务来说足够了
 #define OLED_TASK_PRIORITY 1 // 任务优先级，数值越大优先级越高（不推荐使用优先级 0）
 TaskHandle_t oledTaskHandle;
-#define OLED_TASK_PERIOD_MS 100 // 任务执行间隔，单位为毫秒，这里设置为2000毫秒
+#define OLED_TASK_PERIOD_MS 100 // 任务执行间隔，单位为毫秒，这里设置为100毫秒
 
 /**
  * @brief 初始化freeRTOS任务
@@ -90,13 +90,14 @@ void joystick_task(void *arg)
 
 void comm_task(void *arg)
 {
-  TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
   while (1)
   {
     // 使用SI24R1发送数据
     App_transmit_data();
-
-    vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
+    // 这里使用vTaskDelay
+    // 原因1：vTaskDelayUntil的延时受到任务运行时间的影响，这里设置为6毫秒，实际执行时间可能会大于6毫秒，导致和任务未执行完成，
+    // 原因2：遥控器和飞机的开机时间不一致导致不同步问题
+    vTaskDelay(pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
   }
 }
 

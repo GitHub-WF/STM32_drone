@@ -18,6 +18,15 @@ uint8_t App_receive_data(void)
   uint8_t res = Int_SI24R1_RxPacket(rxbuf);
   if (res == 0)
   {
+    // 收到遥控数据，准备回传
+    Int_SI24R1_TX_Mode();
+    uint8_t count = 500;
+    while (Int_SI24R1_TxPacket(voltage_buf) == 1 && count--)
+    {
+      vTaskDelay(1);
+    }
+    Int_SI24R1_RX_Mode();
+
     log_printf("rece data: %s", rxbuf);
     // 校验帧头
     if (rxbuf[0] != FRAME_HEADER_1 || rxbuf[1] != FRAME_HEADER_2 || rxbuf[2] != FRAME_HEADER_3)

@@ -22,6 +22,7 @@ virtualFolder:
               files:
                 - path: ../Core/Src/main.c
                 - path: ../Core/Src/gpio.c
+                - path: ../Core/Src/adc.c
                 - path: ../Core/Src/i2c.c
                 - path: ../Core/Src/spi.c
                 - path: ../Core/Src/tim.c
@@ -35,7 +36,8 @@ virtualFolder:
         - name: STM32F1xx_HAL_Driver
           files:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c
-            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c
@@ -46,6 +48,7 @@ virtualFolder:
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c
+            - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c
             - path: ../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c
@@ -130,6 +133,8 @@ virtualFolder:
         - path: ../Interface/Int_SI24R1.h
         - path: ../Interface/Int_MPU6050.c
         - path: ../Interface/Int_MPU6050.h
+        - path: ../Interface/Int_BAT_ADC.c
+        - path: ../Interface/Int_BAT_ADC.h
       folders:
         - name: fix_height
           files:

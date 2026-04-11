@@ -26,9 +26,11 @@ TaskHandle_t ledTaskHandle;
 // 通讯任务
 void comm_task(void *arg);
 #define COMM_TASK_STACK_SIZE 128 // 任务栈大小，单位为字节，128字节对于这个简单的任务来说足够了
-#define COMM_TASK_PRIORITY 2 // 任务优先级，数值越大优先级越高（不推荐使用优先级 0）
+#define COMM_TASK_PRIORITY 4 // 任务优先级，数值越大优先级越高（不推荐使用优先级 0）
 TaskHandle_t commTaskHandle;
 #define COMM_TASK_PERIOD_MS 6 // 任务执行间隔，单位为毫秒，这里设置为6毫秒
+
+uint8_t voltage_buf[TX_PLOAD_WIDTH] = {0};
 
 /**
  * @brief 初始化freeRTOS任务
@@ -159,7 +161,7 @@ void led_task(void *arg)
 
 void comm_task(void *arg)
 {
-  TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
+  // 初始化电池电压测量
   while (1)
   {
     // 接收数据，并处理
@@ -180,6 +182,10 @@ void comm_task(void *arg)
     // 处理飞机飞行状态 - 遇到故障状态时
     App_process_flight_data();
 
-    vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
+    // 回传电池电压
+    float voltage = Int_BAT_ADC_Read();
+    sprintf(voltage_buf, "%.2f", voltage);
+
+    vTaskDelay(pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
   }
 }

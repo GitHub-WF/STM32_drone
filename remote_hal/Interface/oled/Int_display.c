@@ -26,6 +26,8 @@ extern Remote_Data remote_data;
 #define Y2 26
 #define Y3 38
 
+extern uint8_t rxbuf[TX_PLOAD_WIDTH];
+
 void App_display_show_bar(uint8_t x, uint8_t y, uint8_t count)
 {
   if (count < 13)
@@ -59,6 +61,10 @@ void App_OLED_refresh(void)
   uint8_t buff[4] = {0};
   sprintf((char *)buff, "%03d", RF_CH);
   OLED_ShowString(LINE2_BEGIN, Y1, buff, 12, 1);
+
+  // 第二行右侧显示电压值
+  OLED_Show_CH_String(LINE2_BEGIN + 12 * 4, Y1, "VOL: ", 12, 1);
+  OLED_ShowString(LINE2_BEGIN + 12 * 5, Y1, rxbuf, 12, 1);
 
   // 展示遥控数据 thr roll
   uint8_t count = 0;
