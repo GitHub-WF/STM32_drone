@@ -30,6 +30,13 @@ void comm_task(void *arg);
 TaskHandle_t commTaskHandle;
 #define COMM_TASK_PERIOD_MS 6 // 任务执行间隔，单位为毫秒，这里设置为6毫秒
 
+// 屏幕任务
+void oled_task(void *arg);
+#define OLED_TASK_STACK_SIZE 128 // 任务栈大小，单位为字节，128字节对于这个简单的任务来说足够了
+#define OLED_TASK_PRIORITY 1 // 任务优先级，数值越大优先级越高（不推荐使用优先级 0）
+TaskHandle_t oledTaskHandle;
+#define OLED_TASK_PERIOD_MS 100 // 任务执行间隔，单位为毫秒，这里设置为2000毫秒
+
 /**
  * @brief 初始化freeRTOS任务
  *
@@ -41,6 +48,7 @@ void App_freeRTOS_Task_Init(void)
   xTaskCreate(comm_task, "CommTask", COMM_TASK_STACK_SIZE, NULL, COMM_TASK_PRIORITY, &commTaskHandle);
   xTaskCreate(key_task, "KeyTask", KEY_TASK_STACK_SIZE, NULL, KEY_TASK_PRIORITY, &keyTaskHandle);
   xTaskCreate(joystick_task, "JoystickTask", JOYSTICK_TASK_STACK_SIZE, NULL, JOYSTICK_TASK_PRIORITY, &joystickTaskHandle);
+  xTaskCreate(oled_task, "OLEDTask", OLED_TASK_STACK_SIZE, NULL, OLED_TASK_PRIORITY, &oledTaskHandle);
   // 2.启动调度器
   vTaskStartScheduler();
 }
@@ -89,5 +97,16 @@ void comm_task(void *arg)
     App_transmit_data();
 
     vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(COMM_TASK_PERIOD_MS)); // 6毫秒执行一次
+  }
+}
+
+void oled_task(void *arg)
+{
+  TickType_t lastWakeTime = xTaskGetTickCount(); // 获取当前系统时间
+  while (1)
+  {
+    // 显示时间
+    App_OLED_refresh();
+    vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(OLED_TASK_PERIOD_MS)); // 100毫秒执行一次
   }
 }

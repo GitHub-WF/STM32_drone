@@ -121,7 +121,16 @@ virtualFolder:
         - path: ../Interface/Int_Key.h
         - path: ../Interface/Int_Joystick.c
         - path: ../Interface/Int_Joystick.h
-      folders: []
+      folders:
+        - name: oled
+          files:
+            - path: ../Interface/oled/Inf_font.c
+            - path: ../Interface/oled/Inf_font.h
+            - path: ../Interface/oled/Inf_OLED.c
+            - path: ../Interface/oled/Inf_OLED.h
+            - path: ../Interface/oled/Int_display.c
+            - path: ../Interface/oled/Int_display.h
+          folders: []
     - name: ::CMSIS
       files: []
       folders: []
@@ -293,6 +302,7 @@ targets:
         - ../freeRTOS/portable
         - ../App
         - ../Interface
+        - ../Interface/oled
         - .cmsis/include
         - RTE/_remote_hal
       libList: []

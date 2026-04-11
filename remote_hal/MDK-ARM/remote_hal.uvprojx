@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Common;../freeRTOS;../freeRTOS/include;../freeRTOS/portable;../App;../Interface</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Common;../freeRTOS;../freeRTOS/include;../freeRTOS/portable;../App;../Interface;..\Interface\oled</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1211,6 +1211,41 @@
               <FileName>Int_Joystick.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Interface\Int_Joystick.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Interface/oled</GroupName>
+          <Files>
+            <File>
+              <FileName>Inf_font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\oled\Inf_font.c</FilePath>
+            </File>
+            <File>
+              <FileName>Inf_font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\oled\Inf_font.h</FilePath>
+            </File>
+            <File>
+              <FileName>Inf_OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\oled\Inf_OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>Inf_OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\oled\Inf_OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Int_display.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Interface\oled\Int_display.c</FilePath>
+            </File>
+            <File>
+              <FileName>Int_display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Interface\oled\Int_display.h</FilePath>
             </File>
           </Files>
         </Group>
